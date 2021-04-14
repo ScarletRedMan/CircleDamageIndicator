@@ -21,6 +21,7 @@ class Vector3:
         z = int((target.z - self.z) * t) + self.z
         return Vector3(x, y, z)
 
+    @property
     def get_as_tuple(self) -> tuple:
         return self.x, self.y, self.z
 
@@ -50,7 +51,7 @@ def on_damage(event):
         fade_out=1,
         x=x,
         y=y,
-        color1=Color(*color.get_as_tuple()),
+        color1=Color(*color.get_as_tuple),
         channel=PLAYERS[key]
     ).send(damager)
 

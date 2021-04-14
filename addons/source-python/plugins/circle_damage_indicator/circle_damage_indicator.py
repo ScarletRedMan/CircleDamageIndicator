@@ -43,7 +43,8 @@ def on_damage(event):
     PLAYERS[key] += 1
 
     player = Player(index_from_userid(event['userid']))
-    color = Vector3(*COLOR_START).linear_interpolate(Vector3(*COLOR_END), 1 - player.health/100.0)
+    t = 1 - player.health/100.0
+    color = Vector3(*COLOR_START).linear_interpolate(Vector3(*COLOR_END), t if t >= 0 else 0)
 
     HudMsg(
         message=str(damage),
